@@ -1,0 +1,13 @@
+{
+  "name": "VetSalud BD II",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "pip install -r /workspace/requirements.txt",
+  "forwardPorts": [27017, 7474, 7687],
+  "portsAttributes": {
+    "7474": { "label": "Neo4j Browser" },
+    "7687": { "label": "Neo4j Bolt" },
+    "27017": { "label": "MongoDB" }
+  }
+}

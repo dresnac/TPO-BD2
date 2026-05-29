@@ -1,0 +1,11 @@
+id_propietario,nombre,apellido,dni,email,telefono,ciudad,provincia
+C007,Lucía,Fernández,45678901,lucia@gmail.com,1101007890,Buenos Aires,Buenos Aires
+C008,Martín,García,32109876,martin@gmail.com,1112008901,Rosario,Santa Fe
+C009,Sofía,Torres,40987654,sofia@gmail.com,1123009012,Córdoba,Córdoba
+C010,Carlos,López,28765432,carlos@gmail.com,1134010123,Buenos Aires,Buenos Aires
+C011,Elena,Romero,37654321,elena@gmail.com,1145011234,La Plata,Buenos Aires
+C012,Pablo,Vargas,43210987,pablo@gmail.com,1156012345,Mendoza,Mendoza
+C013,María,Castillo,36543210,maria@gmail.com,1167013456,Salta,Salta
+C014,Andrés,Moreno,29876543,andres@gmail.com,1178014567,Buenos Aires,Buenos Aires
+C015,Claudia,Reyes,41098765,claudia@gmail.com,1189015678,Tucumán,Tucumán
+C016,Ricardo,Silva,34567890,ricardo@gmail.com,1190016789,Rosario,Santa Fe

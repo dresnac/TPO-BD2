@@ -1,0 +1,11 @@
+id_cirugia,id_paciente,id_vet,fecha,tipo,descripcion,anestesia,duracion_min,costo,estado,observaciones_post
+CIR011,P002,V015,2026-01-15,Esplenectomía,Esplenomegalia severa con hemangiosarcoma,General,110,72000,Completada,Control oncológico mensual
+CIR012,P004,V006,2026-02-20,Cistotomía,Urolitiasis vesical con obstrucción,General,85,48000,Completada,Dieta especial permanente
+CIR013,P010,V002,2026-03-08,Artroscopia de rodilla,Ruptura ligamento cruzado anterior,General,100,65000,Completada,Fisioterapia 8 semanas
+CIR014,P014,V011,2026-03-25,Esplenectomía parcial,Quiste esplénico benigno,General,70,40000,Completada,Ecografía control en 30 días
+CIR015,P001,V015,2026-04-10,Mastectomía,Nódulo mamario sospechoso grado I,General,90,52000,Completada,Histopatología enviada
+CIR016,P005,V002,2026-04-22,Herniorrafia inguinal,Hernia inguinal unilateral,General,65,38000,Completada,Alta en 24h
+CIR017,P016,V006,2026-05-05,Luxación de cadera,Reducción cerrada bajo anestesia,General,55,30000,Completada,Vendaje Ehmer 21 días
+CIR018,P013,V011,2026-05-12,Gastrectomía parcial,Dilatación-vólvulo gástrico,General,140,85000,Completada,UCI 48h post-op
+CIR019,P009,V015,2026-05-20,Amputación de cola,Fractura múltiple irreductible,Local,35,22000,Programada,Programada para el 2026-06-01
+CIR020,P007,V002,2026-05-25,Corrección palatoschisis,Fisura palatina congénita,General,120,78000,Programada,Programada para el 2026-06-05

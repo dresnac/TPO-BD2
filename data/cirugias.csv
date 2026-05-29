@@ -1,0 +1,11 @@
+id_cirugia,id_paciente,id_vet,fecha,tipo,descripcion,anestesia,duracion_min,costo,estado,observaciones_post
+CIR001,P003,V002,2025-09-20,Reducción de fractura,Fractura radio pata anterior derecha,General,90,45000,Completada,Reposo absoluto 21 días
+CIR002,P001,V002,2025-08-15,Esterilización,Ovariohisterectomía electiva,General,60,25000,Completada,Alta normal a las 24h
+CIR003,P005,V006,2025-07-22,Extirpación tumor cutáneo,Masa en flanco izquierdo,Local,45,18000,Completada,Control histopatológico en 10 días
+CIR004,P007,V002,2025-10-05,Corrección luxación patelar,Luxación grado III,General,120,55000,Completada,Fisioterapia 6 semanas
+CIR005,P008,V006,2025-06-10,Cirugía de pico,Deformidad de pico por traumatismo,Local,30,12000,Completada,Seguimiento semanal
+CIR006,P013,V011,2025-11-18,Herniorrafia umbilical,Hernia umbilical complicada,General,75,32000,Completada,Alta en 48h
+CIR007,P016,V015,2025-12-01,Amputación de dedo,Necrosis por trauma severo,General,50,28000,Completada,Antibióticos 10 días
+CIR008,P011,V002,2025-08-30,Laparotomía exploratoria,Obstrucción intestinal parcial,General,95,62000,Completada,Dieta blanda 14 días
+CIR009,P009,V006,2025-05-12,Esterilización,Orquiectomía electiva,General,40,15000,Completada,Alta normal a las 12h
+CIR010,P012,V011,2025-09-08,Rinoplastia correctiva,Estenosis de narinas severa,General,60,35000,Completada,Mejora respiratoria inmediata

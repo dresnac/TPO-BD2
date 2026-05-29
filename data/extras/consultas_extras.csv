@@ -1,0 +1,11 @@
+id_consulta,id_paciente,id_vet,fecha,motivo,diagnostico,costo,estado
+CON009,P009,V007,2026-04-05,Control anual,Sano,3500,Cerrada
+CON010,P010,V003,2026-04-12,Alergia cutánea,Dermatitis atópica,5800,Seguimiento
+CON011,P011,V001,2026-04-20,Control post-operatorio,En recuperación,4200,Seguimiento
+CON012,P012,V007,2026-05-02,Control rutina,Sano,2800,Cerrada
+CON013,P013,V002,2026-05-10,Revisión herida,Cicatrización normal,6000,Cerrada
+CON014,P014,V005,2026-05-15,Control anual,Sano,3200,Cerrada
+CON015,P015,V003,2026-05-18,Eccema recurrente,Dermatitis alérgica,4800,Seguimiento
+CON016,P016,V001,2026-05-22,Control peso,Sobrepeso leve,3000,Cerrada
+CON017,P005,V009,2026-05-25,Control gastritis,Mejoría notable,2500,Cerrada
+CON018,P009,V007,2025-03-15,Revisión general,Sano,4000,Cerrada

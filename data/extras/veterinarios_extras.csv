@@ -1,0 +1,11 @@
+id_vet,nombre,apellido,matricula,especialidad,sucursal,activo
+V006,Fernando,Paz,VET-0123,Cirugía,Belgrano,True
+V007,Isabella,Cruz,VET-0134,Clínica General,Palermo,True
+V008,Rodrigo,Méndez,VET-0145,Traumatología,Caballito,True
+V009,Natalia,Ruiz,VET-0156,Clínica General,Belgrano,True
+V010,Alejandro,Flores,VET-0167,Neurología,Palermo,True
+V011,Verónica,Gutiérrez,VET-0178,Cirugía,Caballito,True
+V012,Sebastián,Ramos,VET-0189,Oftalmología,Belgrano,True
+V013,Adriana,Morales,VET-0190,Clínica General,Caballito,True
+V014,Eduardo,Ortega,VET-0201,Cardiología,Palermo,True
+V015,Patricia,Núñez,VET-0212,Cirugía,Belgrano,True

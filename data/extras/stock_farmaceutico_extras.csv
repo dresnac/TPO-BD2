@@ -1,0 +1,11 @@
+id_producto,nombre,categoria,unidades,precio_unit,vencimiento,proveedor
+PRD007,Enrofloxacina 50mg,Antibiótico,35,1100,2026-08-15,VetFarma SA
+PRD008,Prednisolona 5mg,Antiinflamatorio,28,950,2026-07-20,BioVet SRL
+PRD009,Tramadol 100mg,Analgésico,15,2200,2026-04-30,MediAnimal
+PRD010,Furosemida 10mg,Diurético,120,600,2027-02-28,BioVet SRL
+PRD011,Atenolol 25mg,Cardiológico,80,1400,2027-03-15,VetFarma SA
+PRD012,Fenobarbital 30mg,Antiepiléptico,45,1800,2026-11-20,MediAnimal
+PRD013,Vitamina B12,Suplemento,200,300,2027-06-01,BioVet SRL
+PRD014,Acepromazina 1%,Tranquilizante,18,3200,2026-09-15,VetFarma SA
+PRD015,Flunixin 50mg,Antiinflamatorio,70,1600,2026-12-10,MediAnimal
+PRD016,Omeprazol 20mg,Gastroprotector,110,750,2027-01-25,BioVet SRL

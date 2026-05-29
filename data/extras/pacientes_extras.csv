@@ -1,0 +1,11 @@
+id_paciente,nombre,especie,raza,fecha_nac,id_propietario,activo
+P009,Max,Perro,Golden Retriever,2020-05-15,C007,True
+P010,Mia,Gato,Maine Coon,2022-08-10,C008,True
+P011,Rocky,Perro,Bulldog Francés,2019-12-03,C009,True
+P012,Princesa,Gato,Angora,2021-04-25,C010,True
+P013,Bruno,Perro,Dóberman,2018-07-18,C011,True
+P014,Lola,Conejo,Holandés,2023-03-07,C012,True
+P015,Simba,Gato,Bengalí,2022-11-30,C013,True
+P016,Thor,Perro,Husky Siberiano,2021-09-14,C014,True
+P017,Daisy,Ave,Loro,2020-06-22,C015,True
+P018,Oso,Perro,San Bernardo,2017-02-28,C016,False

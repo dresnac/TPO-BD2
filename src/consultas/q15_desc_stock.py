@@ -1,5 +1,5 @@
-"""Módulo para el descuento de stock de un producto individual.
-"""
+""" Q15: Actualización masiva del stock: decrementar unidades de un producto tras una
+consulta. """
 
 from src.db.mongo import get_db
 

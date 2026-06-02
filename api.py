@@ -290,7 +290,21 @@ def baja_logica_propietario(propietario_id: str):
     description="Motor: Híbrido (Valida la existencia cruzada de Paciente y Veterinario en MongoDB/Neo4j antes de dar de alta la consulta).",
     tags=["Gestión Médica"]
 )
-def registrar_nueva_consulta(datos_consulta: dict = Body(..., description="JSON con la información de la nueva consulta")):
+def registrar_nueva_consulta(
+    datos_consulta: dict = Body(
+        ...,
+        example={
+            "id_paciente": 1,
+            "id_vet": 1,
+            "fecha": "2026-06-02",
+            "motivo": "Control",
+            "diagnostico": "Chequeo",
+            "costo": 2500,
+            "estado": "Completada",
+        },
+        description="JSON con la información de la nueva consulta",
+    )
+):
     try:
         return q14_nueva_consulta.ejecutar(datos_consulta)
     except ValueError as val_err:

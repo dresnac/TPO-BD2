@@ -56,3 +56,8 @@ def descontar_producto_individual(id_producto_limpio, cantidad_a_descontar):
                 "cantidad_solicitada": cantidad_a_descontar,
             },
         }
+
+
+def ejecutar(producto_id, cantidad):
+    """Wrapper compatible con la API: ejecutar(producto_id, cantidad)."""
+    return descontar_producto_individual(producto_id, cantidad)

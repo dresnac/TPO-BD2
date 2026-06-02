@@ -40,7 +40,6 @@ def _float(s):
 
 
 def load_all():
-    print("ENTRE AL LOAD_MONGO")
     db = get_db()
 
     # propietarios
@@ -75,11 +74,6 @@ def load_all():
         + _csv(os.path.join(_EXTRAS, "pacientes_extras.csv"))
     )
 
-    print("TEST IDS")
-    print(rows[0]["id_paciente"])
-    print(_id(rows[0]["id_paciente"]))
-    print(rows[0]["id_propietario"])
-    print(_id(rows[0]["id_propietario"]))
 
     db.pacientes.insert_many([
         {

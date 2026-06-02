@@ -1,5 +1,7 @@
-from fastapi import FastAPI, Query, HTTPException
+from fastapi import FastAPI, Query, HTTPException, Body
 from fastapi.responses import RedirectResponse
+from pydantic import BaseModel, Field
+from typing import List, Optional
 from src.consultas import (
     q01_pacientes_activos,
     q02_consultas_abiertas,
@@ -11,7 +13,11 @@ from src.consultas import (
     q08_stock_bajo,
     q09_consultas_control,
     q10_pacientes_por_sucursal,
-    q11_ingresos_por_vet
+    q11_ingresos_por_vet,
+    q12_propietarios_sin_consultas,
+    q13_ABM_propietarios,
+    q14_nueva_consulta,
+    q15_desc_stock
 )
 
 app = FastAPI(
@@ -20,9 +26,55 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# ==========================================
+# MODELOS DE PYDANTIC (Para estructurar el Swagger)
+# ==========================================
+
+class PacienteSchema(BaseModel):
+    nombre: str = Field(..., example="Firulais")
+    especie: str = Field(..., example="Canina")
+    raza: str = Field(..., example="Labrador")
+    fecha_nac: str = Field(..., description="Fecha en formato YYYY-MM-DD", example="2022-03-15")
+
+class PropietarioAltaSchema(BaseModel):
+    nombre: str = Field(..., example="Juan")
+    apellido: str = Field(..., example="Pérez")
+    dni: str = Field(..., example="12345678")
+    email: str = Field(..., example="juan@email.com")
+    telefono: str = Field(..., example="11223344")
+    ciudad: str = Field(..., example="Palermo")
+    provincia: str = Field(..., example="Buenos Aires")
+    pacientes: Optional[List[PacienteSchema]] = Field(default=[], description="Lista opcional de mascotas del propietario")
+
+    class Config:
+        # Esto genera el JSON de ejemplo por defecto en el cuadro de texto de Swagger
+        json_schema_extra = {
+            "example": {
+                "nombre": "Juan",
+                "apellido": "Pérez",
+                "dni": "12345678",
+                "email": "juan@email.com",
+                "telefono": "11223344",
+                "ciudad": "Palermo",
+                "provincia": "Buenos Aires",
+                "pacientes": [
+                    {
+                        "nombre": "Firulais",
+                        "especie": "Canina",
+                        "raza": "Labrador",
+                        "fecha_nac": "2022-03-15"
+                    }
+                ]
+            }
+        }
+
+
+# ==========================================
+# ENDPOINTS EXISTENTES
+# ==========================================
+
 @app.get("/", include_in_schema=False)
 def index():
-    # Redirige automáticamente a la documentación Swagger interactiva
     return RedirectResponse(url="/docs")
 
 @app.get(
@@ -56,7 +108,7 @@ def get_consultas_seguimiento():
     tags=["Consultas"]
 )
 def get_historial_clinico(
-    paciente_id: str = Query(..., description="ID del paciente a buscar (ej. P001)")
+    paciente_id: str = Query(..., description="ID del paciente a buscar (ej. 001)")
 ):
     try:
         resultado = q03_historial_paciente.ejecutar(paciente_id)
@@ -163,3 +215,107 @@ def get_ingresos_mensuales_veterinarios():
         return q11_ingresos_por_vet.ejecutar()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al ejecutar consulta: {str(e)}")
+
+
+# ==========================================
+# NUEVOS ENDPOINTS: Q12 A Q15
+# ==========================================
+
+@app.get(
+    "/consultas/propietarios-sin-consultas-recientes", 
+    summary="[Q12] Propietarios sin consultas registradas en el último año",
+    description="Motor: Híbrido/Neo4j (Busca propietarios cuyos animales no posean relaciones de consulta con fechas dentro de los últimos 365 días).",
+    tags=["Consultas"]
+)
+def get_propietarios_sin_consultas_anio():
+    try:
+        return q12_propietarios_sin_consultas.ejecutar()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al ejecutar consulta: {str(e)}")
+
+
+@app.post(
+    "/propietarios", 
+    summary="[Q13] ABM Propietarios - Alta",
+    description="Motor: Neo4j/MongoDB (Crea un nuevo registro de propietario y sus mascotas opcionales usando persistencia políglota).",
+    tags=["ABM Propietarios"]
+)
+def alta_propietario(datos: PropietarioAltaSchema):
+    try:
+        # .model_dump() transforma el objeto Pydantic de vuelta a un dict nativo de Python
+        # para que q13_ABM_propietarios.alta() trabaje transparentemente.
+        return q13_ABM_propietarios.alta(datos.model_dump())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al registrar alta: {str(e)}")
+
+
+@app.put(
+    "/propietarios/{propietario_id}", 
+    summary="[Q13] ABM Propietarios - Modificación",
+    description="Motor: Neo4j/MongoDB (Modifica los datos de un propietario existente buscado por su ID).",
+    tags=["ABM Propietarios"]
+)
+def modificacion_propietario(
+    propietario_id: str, 
+    datos: dict = Body(..., description="Campos actualizados del propietario")
+):
+    try:
+        resultado = q13_ABM_propietarios.modificacion(propietario_id, datos)
+        if not resultado:
+            raise HTTPException(status_code=404, detail=f"No se encontró el propietario con ID {propietario_id}")
+        return resultado
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al modificar propietario: {str(e)}")
+
+
+@app.delete(
+    "/propietarios/{propietario_id}", 
+    summary="[Q13] ABM Propietarios - Baja Lógica",
+    description="Motor: Neo4j/MongoDB (Establece el estado del propietario en 'Inactivo' sin borrarlo físicamente).",
+    tags=["ABM Propietarios"]
+)
+def baja_logica_propietario(propietario_id: str):
+    try:
+        resultado = q13_ABM_propietarios.baja_logica(propietario_id)
+        if not resultado:
+            raise HTTPException(status_code=404, detail=f"No se encontró el propietario con ID {propietario_id}")
+        return {"status": "success", "message": f"Baja lógica aplicada con éxito al propietario {propietario_id}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al aplicar baja lógica: {str(e)}")
+
+
+@app.post(
+    "/consultas", 
+    summary="[Q14] Registrar nueva consulta médica con validación",
+    description="Motor: Híbrido (Valida la existencia cruzada de Paciente y Veterinario en MongoDB/Neo4j antes de dar de alta la consulta).",
+    tags=["Gestión Médica"]
+)
+def registrar_nueva_consulta(datos_consulta: dict = Body(..., description="JSON con la información de la nueva consulta")):
+    try:
+        return q14_nueva_consulta.ejecutar(datos_consulta)
+    except ValueError as val_err:
+        raise HTTPException(status_code=400, detail=str(val_err))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al registrar la consulta: {str(e)}")
+
+
+@app.patch(
+    "/stock/decrementar", 
+    summary="[Q15] Actualización masiva de stock",
+    description="Motor: MongoDB (Decrementa en N unidades el stock de un producto específico tras una consulta médica).",
+    tags=["Inventario"]
+)
+def actualizar_stock_masivo(
+    producto_id: str = Query(..., description="ID del producto a decrementar"),
+    cantidad: int = Query(..., description="Cantidad de unidades a restar del stock")
+):
+    try:
+        if cantidad <= 0:
+            raise HTTPException(status_code=400, detail="La cantidad a decrementar debe ser mayor a 0.")
+        
+        resultado = q15_desc_stock.ejecutar(producto_id, cantidad)
+        return resultado
+    except ValueError as val_err:
+        raise HTTPException(status_code=400, detail=str(val_err))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al actualizar el stock: {str(e)}")

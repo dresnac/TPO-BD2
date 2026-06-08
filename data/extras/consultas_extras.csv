@@ -9,3 +9,8 @@ CON015,P015,V003,2026-05-18,Eccema recurrente,Dermatitis alérgica,4800,Seguimie
 CON016,P016,V001,2026-05-22,Control peso,Sobrepeso leve,3000,Cerrada
 CON017,P005,V009,2026-05-25,Control gastritis,Mejoría notable,2500,Cerrada
 CON018,P009,V007,2025-03-15,Revisión general,Sano,4000,Cerrada
+CON019,P001,V001,2026-06-01,Control mensual,Sano,4500,Cerrada
+CON020,P010,V003,2026-06-03,Control dermatológico,Mejoría notable,5200,Seguimiento
+CON021,P006,V001,2026-06-05,Vacunación anual,Sano,3800,Cerrada
+CON022,P016,V007,2026-06-07,Control peso,Sobrepeso leve,3500,Cerrada
+CON023,P005,V009,2026-06-04,Control gastritis,Cuadro estable,2800,Seguimiento

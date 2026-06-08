@@ -9,3 +9,5 @@ CIR017,P016,V006,2026-05-05,Luxación de cadera,Reducción cerrada bajo anestesi
 CIR018,P013,V011,2026-05-12,Gastrectomía parcial,Dilatación-vólvulo gástrico,General,140,85000,Completada,UCI 48h post-op
 CIR019,P009,V015,2026-05-20,Amputación de cola,Fractura múltiple irreductible,Local,35,22000,Programada,Programada para el 2026-06-01
 CIR020,P007,V002,2026-05-25,Corrección palatoschisis,Fisura palatina congénita,General,120,78000,Programada,Programada para el 2026-06-05
+CIR021,P011,V002,2026-06-02,Castración,Procedimiento de rutina,General,60,35000,Completada,Recuperación normal en 24h
+CIR022,P008,V015,2026-06-06,Extracción dental,Periodontitis severa con piezas comprometidas,General,45,28000,Completada,Antibiótico oral por 10 días

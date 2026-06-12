@@ -133,7 +133,7 @@ Esto poblará ambas bases de datos con los datasets originales y las extensiones
 Una vez que las bases de datos estén activas y los datos cargados, puedes iniciar el servidor web utilizando Uvicorn:
 
 ```bash
-uvicorn api:app --reload
+python -m uvicorn api:app --reload
 ```
 
 El servidor web se levantará en: **http://127.0.0.1:8000**

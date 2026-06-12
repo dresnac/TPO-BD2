@@ -279,7 +279,7 @@ def baja_logica_propietario(propietario_id: str):
         resultado = q13_ABM_propietarios.baja_logica(propietario_id)
         if not resultado:
             raise HTTPException(status_code=404, detail=f"No se encontró el propietario con ID {propietario_id}")
-        return {"status": "success", "message": f"Baja lógica aplicada con éxito al propietario {propietario_id}"}
+        return resultado
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al aplicar baja lógica: {str(e)}")
 
